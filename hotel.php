@@ -1,5 +1,16 @@
 <?php
 
+$choosePark = $_GET['parking'];
+$chooseVote = $_GET['vote'];
+
+if ($choosePark == 'Presente') {
+    $choosePark = true;
+} elseif ($choosePark == 'Assente') {
+    $choosePark = false;
+} elseif ($choosePark == 'Scegli') {
+    $choosePark = null;
+}
+
 $hotels = [
     [
         'name' => 'Hotel Belvedere',
@@ -51,6 +62,23 @@ $hotels = [
     ],
 ];
 
+function createHotelCard($hotel)
+{
+    $card = "<div class='col'>
+    <div class='box'>
+        <img src='{$hotel['image']}'>
+        <div class='box-bottom-card'>
+            <h3 class='mb-1'> {$hotel['name']} </h3>
+            <p class='mb-05'>{$hotel['description']}</p>
+            
+            <p>Voto: {$hotel['vote']} </p>
+            <p>Distanza dal centro: {$hotel['distance_to_center']}metri</p>
+        </div>
+    </div>
+    </div>";
+    return $card;
+}
+
 ?>
 
 
@@ -71,30 +99,30 @@ $hotels = [
         // var_dump($hotels)
         ?>
     </pre> -->
+    <form action="hotel.php" method="GET">
+        <label for="parking">Parcheggio</label>
+        <select name="parking" id="parking">
+            <option value="Scegli">Scegli</option>
+            <option value="Presente">Presente</option>
+            <option value="Assente">Assente</option>
+        </select>
+        <label for="vote">Voto</label>
+        <select name="vote" id="vote">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <button type="submit">Cerca</button>
+    </form>
     <div class="container">
         <div class="row">
             <?php
             foreach ($hotels as $hotel) {
-            ?>
-                <div class="col">
-                    <div class="box">
-                        <img src="<?php echo $hotel['image'] ?>" alt="">
-                        <div class="box-bottom-card">
-                            <h3 class="mb-1"><?php echo $hotel['name'] ?></h3>
-                            <p class="mb-05"><?php echo $hotel['description'] ?></p>
-                            <p>Parcheggio: <?php
-                                            if ($hotel['parking']) {
-                                                echo 'Presente';
-                                            } else {
-                                                echo 'Assente';
-                                            } ?>
-                            </p>
-                            <p>Voto: <?php echo $hotel['vote'] ?></p>
-                            <p>Distanza dal centro: <?php echo $hotel['distance_to_center'] ?> metri</p>
-                        </div>
-                    </div>
-                </div>
-            <?php
+                if ($choosePark === null || $choosePark === $hotel['parking'] && $hotel['vote'] >= $chooseVote) {
+                    echo createHotelCard($hotel);
+                }
             }
             ?>
         </div>
