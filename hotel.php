@@ -18,7 +18,7 @@ $hotels = [
         'parking' => true,
         'vote' => 4,
         'distance_to_center' => 10.4,
-        'image' => 'https://picsum.photos/300/200'
+        'image' => 'https://cdn.pixabay.com/photo/2013/12/28/13/57/caesars-palace-234744_1280.jpg'
     ],
     [
         'name' => 'Hotel Futuro',
@@ -26,7 +26,7 @@ $hotels = [
         'parking' => true,
         'vote' => 2,
         'distance_to_center' => 2,
-        'image' => 'https://picsum.photos/300/200'
+        'image' => 'https://cdn.pixabay.com/photo/2021/12/11/07/59/hotel-6862159_640.jpg'
     ],
     [
         'name' => 'Hotel Rivamare',
@@ -34,7 +34,7 @@ $hotels = [
         'parking' => false,
         'vote' => 1,
         'distance_to_center' => 1,
-        'image' => 'https://picsum.photos/300/200'
+        'image' => 'https://cdn.pixabay.com/photo/2015/09/07/19/12/hotel-928937_640.jpg'
     ],
     [
         'name' => 'Hotel Bellavista',
@@ -42,7 +42,7 @@ $hotels = [
         'parking' => false,
         'vote' => 5,
         'distance_to_center' => 5.5,
-        'image' => 'https://picsum.photos/300/200'
+        'image' => 'https://cdn.pixabay.com/photo/2016/08/29/20/52/los-angeles-1629161_640.jpg'
     ],
     [
         'name' => 'Hotel Milano',
@@ -50,7 +50,7 @@ $hotels = [
         'parking' => true,
         'vote' => 2,
         'distance_to_center' => 50,
-        'image' => 'https://picsum.photos/300/200'
+        'image' => 'https://cdn.pixabay.com/photo/2018/08/08/13/34/taj-mahal-palace-hotel-3592184_640.jpg'
     ],
     [
         'name' => 'Hotel Savoia',
@@ -58,7 +58,7 @@ $hotels = [
         'parking' => true,
         'vote' => 5,
         'distance_to_center' => 550,
-        'image' => 'https://picsum.photos/300/200'
+        'image' => 'https://cdn.pixabay.com/photo/2019/11/02/22/40/woodstock-4597568_640.jpg'
     ],
 ];
 
@@ -94,11 +94,6 @@ function createHotelCard($hotel)
 
 <body>
     <h1>Lista Hotel</h1>
-    <!-- <pre>
-        <?php
-        // var_dump($hotels)
-        ?>
-    </pre> -->
     <form action="hotel.php" method="GET">
         <label for="parking">Parcheggio</label>
         <select name="parking" id="parking">
